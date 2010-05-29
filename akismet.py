@@ -100,3 +100,19 @@ def submit_ham(key, blog, user_ip, user_agent, **other):
     response, status = __post(urlencode(request), "%s.%s" % (key,AKISMET_URL), "/1.1/submit-ham", AKISMET_PORT)
     if status != 200 or response != "":
         raise AkismetError(response, status)
+
+class Akismet(object):
+    """Simple wrapper for the API, remembering the common parameters
+    """
+    def __init__(self, key, blog):
+        self.key = key
+        self.blog = blog
+    def verify_key(self):
+        return verify_key(self.key, self.blog)
+    def comment_check(self, user_ip, user_agent, **other):
+        return comment_check(self.key, self.blog, user_ip, user_agent, **other)
+    def submit_spam(self, user_ip, user_agent, **other):
+        return submit_spam(self.key, self.blog, user_ip, user_agent, **other)
+    def submit_ham(self, user_ip, user_agent, **other):
+        return submit_ham(self.key, self.blog, user_ip, user_agent, **other)
+
