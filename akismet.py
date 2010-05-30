@@ -1,11 +1,12 @@
 #!/usr/bin/python
 
-__version__ = "0.3"
+__version__ = "0.4"
 __date__ = "2005-12-01"
 __author__ = "David Lynch (kemayo AT Google's mail service DOT com)"
 __copyright__ = "Copyright 2005, David Lynch"
 __license__ = "New BSD"
 __history__ = """
+0.4 - 20100530 - Added a class for remembering API key/url, and put on github.
 0.3 - 20051205 - Cleaned up __post.
 0.2 - 20051201 - Added documentation, and tweaked the circumstances where an error
     will be thrown.
